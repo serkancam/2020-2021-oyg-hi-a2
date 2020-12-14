@@ -51,8 +51,8 @@ print(id(a))
 # %% oop de sahip olma durumuna göre değişkenler
 # nesenelere ait değikenler.
 #bilgi gizleme kapsülleme
-# iki öçzellik erişim türü ile belirlenir
-# public türetilen neseneden bu özlliğe ulaşılabilir
+# iki özellik erişim türü ile belirlenir
+# public türetilen neseneden bu özelliğe ulaşılabilir
 # private sadece sınıf içinden ulaşılabilir.
 
 class Kedi:
@@ -169,4 +169,101 @@ print(l1[2])
 print(type(l1[2]))
 print((l1[2].values()))
 
+# %% sınıfa ait özellik ve davranışlar
+#$ bazı özellik ve davarnışlar sınıfa ait tanımlanmak istenebir
+
+class Hayvan:
+    adet=0
+    def __init__(self,ad="yok",renk="sarı",kilo=5):#yapıcı method (instructor)        
+        self.isim=ad#public
+        self.renk=renk#
+        self.arttir()
+        self.__kilo=10#iki alt çizgi bu değeri gizler bu  kapsulleme diye adlandırılır(encapsulation)
+        # print(self.isim,"isimli kedi oluştu.","rengi=",self.renk)
+        #nesne değişkenlleri
+    # def __del__(self):#yok edici method çalıştı
+    #     print(self.isim," kedisi ram den silindi.")
+    @classmethod
+    def arttir(cls):
+        cls.adet+=1
+    def setKilo(self,kilo):#set properties
+        if kilo>0:
+            self.__kilo=kilo
+            print("kilo değeri verildi")
+        elif kilo==0:
+            pass
+        else:
+            self.__kilo=-kilo
+    def getKilo(self):#get properties
+        return self.__kilo
+
+h1=Hayvan(ad="tekir")
+
+h2=Hayvan(ad="tekir")
+
+h3=Hayvan(ad="tekir")
+
+
+print(h1.isim)
+
+h1.isim="miyav"
+print(h1.isim)
+print(h1.getKilo())#private
+h1.setKilo(0)
+print(h1.getKilo())#private
+# print(dir(Hayvan))
+print(Hayvan.adet)
+
+
+# %% hesap sınıfı
+
+class Hesap:
+    degerler=[0]#sınıfa ait özellik
+    @classmethod#sınıfın methodu olarak işaretle 
+    def topla(cls):#burada sınıfa ait çzelliklere ulaşmak için clsyi kullanıyoru
+        toplam=0
+        for a in cls.degerler:
+            toplam+=a
+        return toplam
+
+Hesap.degerler.append(3)
+
+print(Hesap.topla())
+print(h1.getKilo())
+# %% sınıf tanı yapalım
+# Araba sınıfı olsun
+# Araba sınıfından oluşan 
+# nesnelere ait
+# renk, marka, model özellikleri olsun 
+# renk değiştir methodu olsun 1 parametre alsın
+# sınıfa ait ise 
+# adet bilgisi olsun kaç tane nesne üretilmiş
+# bu sınıfa aitt adet_arttir davranışı olsun
+
+class Araba:
+    adet=0
+    def __init__(self,r:str="sarı",m:str="marka",md:int=1990):
+        self.renk=r
+        self.marka=m
+        self.model=md
+        self.arttir()
+    
+    def renk_degistir(self,re:str):
+        self.renk=re
+    @classmethod
+    def arttir(cls):
+        cls.adet+=1
+    def __del__(self):
+        print("bir araba silindi")
+
+    
+
+arabalar=[]
+
+for _ in range(30):
+    araba=Araba()
+    arabalar.append(araba)
+
+print(Araba.adet)
+del arabalar[0]
 # %%
