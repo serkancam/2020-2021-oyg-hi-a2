@@ -266,4 +266,79 @@ for _ in range(30):
 
 print(Araba.adet)
 del arabalar[0]
+# sınıfa ait methodlar @classmethod ile tanımlanır.
+
+#%% örnek miras alma
+class dizi(list):
+    def toplam(self):
+        toplam=0
+        for i in self.copy():
+            toplam+=i
+        return toplam
+
+a=dizi()
+
+a.append(20)
+a.append(30)
+a.append(40)
+
+print(a.toplam())
+# %% miras
+# punlic davranş ve özellikler miras verilir
+# private davranış ve özellikler miras verilmez
+
+# method eğer sınıfta tanımlı değilse ata sınıfa
+# baklır. Eğer sınıfta tanımlı ise o metod çalıştırılır. buna method ezme(override) denir.
+class Hayvan:
+    def __init__(self,ad):#method ezme(override)
+        self.ad=ad
+        # self.yas=10
+        print(self.ad,"Hayanı oluşturuldu.")
+    def ses_cikar(self):
+        print(self.ad,"hayvanı ses çıkardı.")
+    def getYas(self):
+        return self.yas
+
+class Kedi(Hayvan):
+    def __init__(self,isim):#methoıd ezme
+        # super().__init__(self,isim)
+        self.ad=isim
+        print(self.ad,"kedi yapıcı")
+    def ses_cikar(self):#method ezme
+        print("miyav..")
+
+class Kopek(Hayvan):
+    def ses_cikar(self):#bu method ezmne değildir.
+        print("hav hav...")
+
+class Kus(Hayvan):
+    def ses_cikar(self):
+        print("cik cik")
+
+
+
+h1 = Hayvan("hayvan")
+kd1 = Kedi("minnoş")
+print(kd1.getYas())
+kp1 = Kopek("karabaş")
+limon=Kus("limon")
+h1.ses_cikar()
+kp1.ses_cikar()
+kd1.ses_cikar()
+limon.ses_cikar()
+# %% çok biçimlilik
+
+def haynavlar_ses_cikarsin(nesne):
+    if isinstance(nesne,Hayvan):
+        nesne.ses_cikar()
+    else:
+        print("bana hayvan vermelisin")
+
+haynavlar_ses_cikarsin(limon)
+haynavlar_ses_cikarsin(kd1)
+haynavlar_ses_cikarsin(kp1)
+haynavlar_ses_cikarsin(h1)
+liste=[]
+haynavlar_ses_cikarsin(liste)
+
 # %%
