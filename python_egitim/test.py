@@ -1,5 +1,7 @@
-def daire_alani(r):
-    alan=3*r*r
-    return alan#return 3*r*r
+a = [3,5,8]
 
-daire_alani(5)
+b= [17,25,9]
+
+c= a+[333]+b
+
+print(c)
