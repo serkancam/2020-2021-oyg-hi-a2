@@ -17,10 +17,10 @@ def selecion_sort(dizim):
     return siraliDizi
 # yerinde sıralama yapmayacak yani bize verilen dizinin 
 # sıralanmış halde yeni bir dizi olarak verecek
+if __name__=="__main__":
+    sd = [random.randint(1,1000) for i in range(20)]
+    print(sd,"ceeee")
 
-sd = [random.randint(1,1000) for i in range(20)]
-print(sd)
-
-sirali=selecion_sort(sd)
-del sd
-print(sirali)
+    sirali=selecion_sort(sd)
+    del sd
+    print(sirali)

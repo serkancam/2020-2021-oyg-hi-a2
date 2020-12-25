@@ -10,11 +10,12 @@ def quick_sort(dizim):
         return quick_sort(sol) + [pivot] +quick_sort(sag)
     
 
-sd = [random.randint(1,1000) for i in range(20)]
+if __name__=='__main__':
+    sd = [random.randint(1,1000) for i in range(20)]
 
-print("sırasız:\n",sd)
-sirali=quick_sort(sd)
-print("sıralı:\n",sirali)
+    print("sırasız:\n",sd)
+    sirali=quick_sort(sd)
+    print("sıralı:\n",sirali)
 
 
 

@@ -1,7 +1,1 @@
-a = [3,5,8]
-
-b= [17,25,9]
-
-c= a+[333]+b
-
-print(c)
+import hiz_testi
