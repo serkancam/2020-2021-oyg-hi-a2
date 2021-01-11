@@ -41,6 +41,7 @@ print(nd2.ndim)
 print(type(nd2))
 # %% 3-D
 # arange, randint, linspace, zeros, ones,full
+import numpy as np
 l = [[[1,2,3],[4,5,6],[7,8,9]]]
 
 nd3 = np.array(l,dtype=np.float16)
