@@ -35,7 +35,12 @@ class App(QMainWindow):
         angle = 0
         scale = 1.0
         while self.durum:
+            
             rotation_matrix = cv2.getRotationMatrix2D(center, angle, scale)
+            if scale<-1:
+                scale+=0.01
+            else:
+                scale-=0.01
             image_r = cv2.warpAffine(image, rotation_matrix, (w, h))
             angle += 1
             img = QImage(image_r.data, w, h, c*w, QImage.Format_RGB888)
