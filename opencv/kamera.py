@@ -23,11 +23,21 @@ class App(QMainWindow):
 
     def kamera_ac_kapa(self):
         # print("Tıklandı")
+        haar_path=os.path.join(self.cd,"opencv","haarcascade_frontalface_alt.xml")
+        face_cascade = cv2.CascadeClassifier(haar_path)
         cam = cv2.VideoCapture(0)# ilk kamera 0 sonrası 1 ....
+        self.win.lblCam.clear()
         self.kamera_durumu = not self.kamera_durumu
         while self.kamera_durumu:
             ret,frame = cam.read()
-            frame = cv2.resize(src=frame,dsize=None,fx=0.6,fy=0.6,interpolation=cv2.INTER_AREA)
+            frame = cv2.resize(src=frame,dsize=None,fx=0.7,fy=0.7,interpolation=cv2.INTER_AREA)
+            gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+            faces = face_cascade.detectMultiScale(gray,1.3,5)
+            face_s=0
+            for (x,y,w,h) in faces:
+                cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,0),3)
+                face_s+=1
+            print("yuz sayısı=",face_s)
             h,w,c = frame.shape
 
             frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
