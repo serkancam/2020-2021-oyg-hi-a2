@@ -13,7 +13,7 @@ print("gri:",gri.shape)
 cv2.imshow("gri",gri)
 # binarization(ikileştirme) veriyi sadece iki farklı değerle ifade etme
 # threshold(eşikleme) 
-(T,binarized_image) = cv2.threshold(gri,1,255,cv2.THRESH_BINARY)
+(T,binarized_image) = cv2.threshold(gri,80,255,cv2.THRESH_BINARY)
 print("binary_image",binarized_image.shape)
 cv2.imshow("binary image",binarized_image)
 # thresh_binary_inverse
