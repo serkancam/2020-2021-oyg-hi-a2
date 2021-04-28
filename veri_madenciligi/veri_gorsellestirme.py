@@ -84,3 +84,63 @@ plt.show()
 sns.catplot(x="kalp_rahatsizligi", hue="elektrokardiyografi", col="talasemi",data=veri, kind="count",height=4, aspect=0.7)
 plt.show()
 # %% kutu grafiği(box plot)
+# sayısal verilerin temel istatistik bilgisini görselleşitmek iin kullanılan grafik türüdür.
+
+# serum kolestrol değerinin kutu grafiği
+sns.boxplot(data=veri,y="serum_kolestrol",orient="h")
+plt.show()
+
+print(veri["serum_kolestrol"].median())
+print(veri["serum_kolestrol"].min())
+print(veri["serum_kolestrol"].max())
+# %% harketsiz kan basıncı kutu grafiği
+sns.boxplot(data=veri,y="hareketsiz_kan_basinci")
+plt.show()
+print(veri["hareketsiz_kan_basinci"].median())
+# %%
+sns.boxplot(data=veri,y="yas")
+plt.show()
+
+# %% en yüksek kalp hızı
+sns.boxplot(data=veri,y="en_yuksek_kalp_hizi")
+plt.show()
+
+# %%
+# serum kolestrol değerinin kutu grafiği
+sns.boxplot(data=veri,y="serum_kolestrol",x="cinsiyet")
+plt.show()
+# %% serum kolestrol verisin IQR değerini bulalım
+#
+sk_q1=veri["serum_kolestrol"].describe()[4]
+sk_q3=veri["serum_kolestrol"].describe()[6]
+sk_IQR=sk_q3-sk_q1
+print("serum_kolestrol IQR=",sk_IQR)
+# %% hareketsiz kan basıncının kadınlar için ve erkekler için ayrı ayrı kutu grafiğini çizdirerek yine kadın ve erkekler için IQR değerlerini hesaplayınız
+
+sns.boxplot(data=veri,x="cinsiyet",y="hareketsiz_kan_basinci")
+plt.show()
+
+# %%
+veri_kadin=veri[veri.cinsiyet=="kadin"]
+veri_erkek=veri[veri.cinsiyet=="erkek"]
+veri_kadin
+veri_erkek
+kadin_hkn_q3=veri_kadin["serum_kolestrol"].describe()[6]
+kadin_hkn_q1=veri_kadin["serum_kolestrol"].describe()[4]
+kadin_hkb_iqr=kadin_hkn_q3-kadin_hkn_q1
+print("kadın IQR=",kadin_hkb_iqr)
+print("kadın Alt sınır",kadin_hkn_q1-1.5*kadin_hkb_iqr)
+print("kadın üst sınır",kadin_hkn_q3+1.5*kadin_hkb_iqr)
+# %% 
+sns.boxplot(data=veri,y="serum_kolestrol",x="cinsiyet",hue="kalp_rahatsizligi")
+plt.show()
+# %%
+g=sns.PairGrid(veri)
+g.map(sns.scatterplot())
+
+
+# %% ısı haritasi grafiği
+sns.heatmap(data=veri.corr(),annot=True,linewidths=0.5,fmt="0.1f")
+plt.show()
+
+# %%
