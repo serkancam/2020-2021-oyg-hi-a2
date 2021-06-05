@@ -37,7 +37,6 @@ veri["talasemi"]=imputer.fit_transform(tal)
 from sklearn.preprocessing import LabelEncoder
 le=LabelEncoder()
 veri["cinsiyet"]=le.fit_transform(veri["cinsiyet"])
-#%%
 veri["gat"]=le.fit_transform(veri["gat"])
 veri["ekg"]=le.fit_transform(veri["ekg"])
 veri["st_e"]=le.fit_transform(veri["st_e"])
