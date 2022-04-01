@@ -14,7 +14,7 @@ while cap.isOpened():
     for kontur in konturlar:
         (x,y,w,h) = cv2.boundingRect(kontur)
         # print(cv2.contourArea(kontur))
-        if cv2.contourArea(kontur)<1600:
+        if cv2.contourArea(kontur)<3000:
             continue
         cv2.rectangle(frame1,(x,y),(x+w,y+h),(0,0,255),2)
         cv2.putText(frame1,"Hareket algilandi",(10,30),cv2.FONT_HERSHEY_SIMPLEX,1,(155,155,0),3)

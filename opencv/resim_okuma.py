@@ -31,7 +31,8 @@ kalinlik = 4
 cv2.line(image,baslangic,bitis,cizgi_rengi,kalinlik)
 #aynı değerler il ebir dikdörtgen çizelim
 cv2.rectangle(image,baslangic,bitis,cizgi_rengi,kalinlik)
-
+image2=image[300:400,200:300]
 cv2.imshow("islenmis resim ",image)
 cv2.imshow("orijinal",o_image)
+cv2.imshow("parca",image2)
 cv2.waitKey(0)

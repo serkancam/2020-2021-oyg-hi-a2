@@ -130,6 +130,7 @@ kadin_hkn_q1=veri_kadin["serum_kolestrol"].describe()[4]
 kadin_hkb_iqr=kadin_hkn_q3-kadin_hkn_q1
 print("kadın IQR=",kadin_hkb_iqr)
 print("kadın Alt sınır",kadin_hkn_q1-1.5*kadin_hkb_iqr)
+
 print("kadın üst sınır",kadin_hkn_q3+1.5*kadin_hkb_iqr)
 # %% 
 sns.boxplot(data=veri,y="serum_kolestrol",x="cinsiyet",hue="kalp_rahatsizligi")
